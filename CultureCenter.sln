@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CultureCenter", "CultureCenter\CultureCenter.csproj", "{806392D1-8B60-463F-90EA-CD2BCA5C165D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CultureCenter.Desktop", "CultureCenter.Desktop\CultureCenter.Desktop.csproj", "{CAECFE26-9DC4-4EC4-91F1-C40CA883E899}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{806392D1-8B60-463F-90EA-CD2BCA5C165D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{806392D1-8B60-463F-90EA-CD2BCA5C165D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{806392D1-8B60-463F-90EA-CD2BCA5C165D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{806392D1-8B60-463F-90EA-CD2BCA5C165D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAECFE26-9DC4-4EC4-91F1-C40CA883E899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAECFE26-9DC4-4EC4-91F1-C40CA883E899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAECFE26-9DC4-4EC4-91F1-C40CA883E899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAECFE26-9DC4-4EC4-91F1-C40CA883E899}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7CBDA90-DA52-4312-818D-8752A4CECE94}
+	EndGlobalSection
+EndGlobal
