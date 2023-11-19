@@ -3,15 +3,16 @@ using CultureCenter.Classes;
 using CultureCenter.data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Linq;
 using System.Security.Cryptography;
 using static CultureCenter.Classes.Helper;
 
 namespace CultureCenter.Pages
-{
+{   
     public partial class TypesEdit : UserControl
     {
         private long _id;
-        private TypesEdit Types;
+        private TypesOfEvent Types;
         public TypesEdit()
         {
             InitializeComponent();
@@ -36,6 +37,10 @@ namespace CultureCenter.Pages
         {
             try
             {
+                if (_id == -1)
+                {
+                    Db.TypesOfEvents.Add(Types);
+                }
                 Db.SaveChanges();
                 NavigationSystem.MainFrame.Content = new ControlTypes();
             }
@@ -49,8 +54,18 @@ namespace CultureCenter.Pages
         {
             try
             {
-                Db.SaveChanges();
-                NavigationSystem.MainFrame.Content = new ControlTypes();
+                Db.TypesOfEvents.Load();
+
+                if (_id != -1)
+                {
+                    Db.TypesOfEvents.Load();
+                    Types = Db.TypesOfEvents.Where(el => el.Id == _id).First();
+                }
+                else
+                {
+                    Types = new TypesOfEvent();
+                }
+                TypesGrid.DataContext = Types;
             }
             catch (System.Exception ex)
             {

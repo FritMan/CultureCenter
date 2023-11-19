@@ -27,7 +27,7 @@ namespace CultureCenter.Pages
             {
                 Db.TypesOfEvents.Remove(selectedTypes);
                 Db.SaveChanges();
-                NavigationSystem.MainFrame.Content = new DataControl();
+                NavigationSystem.MainFrame.Content = new ControlTypes();
             }
         }
 

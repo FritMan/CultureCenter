@@ -7,7 +7,7 @@
 	<UniformGrid Name="TypesGrid" Columns="2" Height="300" Width="450">
 		<Label Content="Вид мероприятия:" VerticalAlignment="Center"
 			   HorizontalAlignment="Right"/>
-		<TextBox Name="DescriptionTb" Text="{Binding Description}" Width="115" Height="30"
+		<TextBox Name="NameTb" Text="{Binding Name}" Width="115" Height="30"
 				 TextWrapping="Wrap" AcceptsReturn="True"
 		 VerticalAlignment="Center" HorizontalAlignment="Left"/>
 
