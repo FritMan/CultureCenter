@@ -27,6 +27,7 @@ namespace CultureCenter.Pages
             {
                 Db.Events.Remove(selectedEvent);
                 Db.SaveChanges();
+                NavigationSystem.MainFrame.Content = new DataControl();
             }
         }
 
@@ -43,7 +44,6 @@ namespace CultureCenter.Pages
         {
             NavigationSystem.MainFrame.Content = new EventEdit(-1);
         }
-
         private void BackBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             NavigationSystem.MainFrame.Content = new IntermediateMenu();
