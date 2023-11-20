@@ -5,7 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CultureCenter.Pages.ControlEducation">
 	<Grid ColumnDefinitions="*" RowDefinitions="50, *, 90">
-		<Label HorizontalAlignment="Center" Grid.Row="1" Content="Образование">
+		<Label HorizontalAlignment="Center" Grid.Row="1" Content="Образовательные">
 		</Label>
 		<Button Name="BackBtn" Content="Назад" HorizontalAlignment="Center" Grid.Column="1"
 				Grid.Row="0"/>

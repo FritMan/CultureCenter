@@ -23,13 +23,13 @@ public partial class MainView : UserControl
 
     private void EntertainmentsBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        PartName = "Развлечения";
+        PartName = "Развлекательные";
         NavigationSystem.MainFrame.Content = new IntermediateMenu();
     }
 
     private void EnlightenmentBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        PartName = "Просвещение";
+        PartName = "Просветительские";
         NavigationSystem.MainFrame.Content = new IntermediateMenu();
     }
 
