@@ -4,6 +4,7 @@ using CultureCenter.data;
 using CultureCenter.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Linq;
 using static CultureCenter.Classes.Helper;
 
 namespace CultureCenter.Pages
@@ -17,17 +18,31 @@ namespace CultureCenter.Pages
             EditEventBtn.Click += EditEventBtn_Click;
             DeleteEventBtn.Click += DeleteEventBtn_Click;
             BackBtn.Click += BackBtn_Click;
+            SearchTB.TextChanged += SearchTB_TextChanged;
             LoadData();
         }
 
-        private void DeleteEventBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        private void SearchTB_TextChanged(object? sender, TextChangedEventArgs e)
         {
-            var selectedEvent = EventDG.SelectedItem as Event;
-            if (selectedEvent != null)
+            LoadData();
+        }
+
+        private async void DeleteEventBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            var selectedEvents = EventDG.SelectedItem as Event;
+            if (selectedEvents != null)
             {
-                Db.Events.Remove(selectedEvent);
-                Db.SaveChanges();
-                NavigationSystem.MainFrame.Content = new DataControl();
+                if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Yes)
+                {
+                    Db.Events.Remove(selectedEvents);
+                    Db.SaveChanges();
+                    NavigationSystem.MainFrame.Content = new DataControl();
+                }
+            }
+            else
+            {
+                Helper.ShowInfo("Выберите мероприятие");
+                return;
             }
         }
 
@@ -53,7 +68,14 @@ namespace CultureCenter.Pages
         {
             Db.Events.Load();
             Db.TypesOfEvents.Load();
-            EventDG.ItemsSource = Db.Events;
+            if (string.IsNullOrEmpty(SearchTB.Text))
+            {
+                EventDG.ItemsSource = Db.Events;
+            }
+            else
+            {
+                EventDG.ItemsSource = Db.Events.Where(el => el.Description.Contains(SearchTB.Text));
+            }
         }
     }
 }

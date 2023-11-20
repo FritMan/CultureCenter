@@ -9,7 +9,9 @@
   <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
 	    <Button Name="EntertainmentsBtn" Content="Развлечения" HorizontalAlignment="Center" Margin="5"
 			    Width="120" HorizontalContentAlignment="Center"/>
-	    <Button Name="EnlightenmentBtn" Content="Просвещение" HorizontalAlignment="Center" Margin="5"
+	    <Button Name="EnlightenmentBtn" Content="Просвещения" HorizontalAlignment="Center" Margin="5"
 			    Width="120" HorizontalContentAlignment="Center"/>
+	  <Button Name="EducationBtn" Content="Образование" HorizontalAlignment="Center" Margin="5"
+		  Width="120" HorizontalContentAlignment="Center"/>
   </StackPanel>
 </UserControl>

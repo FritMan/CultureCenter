@@ -6,6 +6,15 @@
              x:Class="CultureCenter.Pages.DataControl">
 	<Grid ColumnDefinitions="*" RowDefinitions="50, *, 90">
 
+
+		<Label HorizontalAlignment="Center" Grid.Row="2" Content="Мероприятия">
+		</Label>
+
+		<StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+			<Label Content="Поиск:" Margin="10"/>
+			<TextBox Name="SearchTB" Background="LightGray" Height="20" Width="90"/>
+		</StackPanel>
+		
 		<Button Name="BackBtn" Content="Назад" HorizontalAlignment="Center" Grid.Column="1"
 				Grid.Row="0"/>
 		<DataGrid Name="EventDG" Grid.Column="0" Grid.Row="1" BorderBrush="Black"
