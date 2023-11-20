@@ -36,6 +36,14 @@ namespace CultureCenter.Classes
                     MsBox.Avalonia.Enums.Icon.Question,
                     WindowStartupLocation.CenterScreen).ShowAsync();
         }
+
+        public static void RefreshAll()
+        {
+            foreach (var item in Db.ChangeTracker.Entries())
+            {
+                item.Reload();
+            };
+        }
     }
 
 

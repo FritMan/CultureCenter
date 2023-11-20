@@ -30,6 +30,7 @@ namespace CultureCenter.Pages
 
         private void BackBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
+            RefreshAll();
             NavigationSystem.MainFrame.Content = new ControlTypes();
         }
 

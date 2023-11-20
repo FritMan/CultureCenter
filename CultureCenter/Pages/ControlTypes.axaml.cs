@@ -43,7 +43,7 @@ namespace CultureCenter.Pages
             }
             else
             {
-                Helper.ShowInfo("Выберите тип мероприятия");
+                Helper.ShowInfo("Выберите вид мероприятия");
                 return;
             }
         }
