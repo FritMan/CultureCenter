@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CultureCenter.Pages.ApplicationControl">
+	<Grid ColumnDefinitions="*" RowDefinitions="50, *, 90">
+
+		<Button Name="BackBtn" Content="Назад" HorizontalAlignment="Center" Grid.Column="1"
+				Grid.Row="0"/>
+
+		<Label HorizontalAlignment="Center" Grid.Row="2" Content="Заявки">
+		</Label>
+
+		<StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+			<Label Content="Поиск:" Margin="10"/>
+			<TextBox Name="SearchTB" Background="LightGray" Height="20" Width="90"/>
+		</StackPanel>
+
+		<DataGrid Name="ApplicationDG" Grid.Column="0" Grid.Row="1" BorderBrush="Black"
+		   BorderThickness="5" Margin="5" IsReadOnly="True">
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="Заявки:"/>
+			</DataGrid.Columns>
+		</DataGrid>
+
+		<StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center">
+			<Button Name="AddApplicationBtn" Content="Добавить" Margin="5"/>
+			<Button Name="EditApplicationBtn" Content="Изменить" Margin="5"/>
+			<Button Name="DeleteApplicationBtn" Content="Удалить" Background="Red" Margin="5"/>
+		</StackPanel>
+	</Grid>
+</UserControl>

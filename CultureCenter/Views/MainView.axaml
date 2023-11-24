@@ -12,6 +12,14 @@
 	    <Button Name="EnlightenmentBtn" Content="Просвятительские" HorizontalAlignment="Center" Margin="5"
 			    Width="150" HorizontalContentAlignment="Center"/>
 	  <Button Name="EducationBtn" Content="Образовательные" HorizontalAlignment="Center" Margin="5"
-		  Width="150" HorizontalContentAlignment="Center"/>
+		        Width="150" HorizontalContentAlignment="Center"/>
+	  <Button Name ="ApplicationsBtn" Content ="Заявки" HorizontalAlignment="Center" Margin="5"
+		        Width="150" HorizontalContentAlignment="Center"/>
+	  <Button Name ="PremisesBtn" Content ="Помещения" HorizontalAlignment="Center" Margin="5"
+	            Width="150" HorizontalContentAlignment="Center"/>
+	  <Button Name ="TypeOfWorkBtn" Content ="Типы работы" HorizontalAlignment="Center" Margin="5"
+	            Width="150" HorizontalContentAlignment="Center"/>
+	  <Button Name ="DesktopBtn" Content ="Рабочий стол" HorizontalAlignment="Center" Margin="5"
+                Width="150" HorizontalContentAlignment="Center"/>
   </StackPanel>
 </UserControl>
