@@ -31,21 +31,26 @@ namespace CultureCenter.Pages
 
         private async void DeleteTypesBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            var selectedTypes = TypesOfEventDG.SelectedItem as TypesOfEvent;
-            if (selectedTypes != null)
+            try
             {
-                if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Yes)
+                var selectedTypes = TypesOfEventDG.SelectedItem as TypesOfEvent;
+                if (selectedTypes != null)
                 {
-                    Db.TypesOfEvents.Remove(selectedTypes);
-                    Db.SaveChanges();
-                    NavigationSystem.MainFrame.Content = new ControlTypes();
+                    if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Yes)
+                    {
+                        Db.TypesOfEvents.Remove(selectedTypes);
+                        Db.SaveChanges();
+                        NavigationSystem.MainFrame.Content = new ControlTypes();
+                    }
+                }
+                else
+                {
+                    Helper.ShowInfo("Выберите вид мероприятия");
+                    return;
                 }
             }
-            else
-            {
-                Helper.ShowInfo("Выберите вид мероприятия");
-                return;
-            }
+            catch
+            { }
         }
 
         private void EditTypesBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

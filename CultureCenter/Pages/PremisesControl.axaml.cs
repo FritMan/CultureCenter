@@ -9,7 +9,6 @@ using Microsoft.Extensions.Logging;
 using System.Data.Common;
 using System.Linq;
 using static CultureCenter.Classes.Helper;
-
 namespace CultureCenter.Pages;
 
 public partial class PremisesControl : UserControl
@@ -58,7 +57,7 @@ public partial class PremisesControl : UserControl
             {
                 Db.Rooms.Remove(selectedRoom);
                 Db.SaveChanges();
-                NavigationSystem.MainFrame.Content = new EditPremises();
+                NavigationSystem.MainFrame.Content = new PremisesControl();
             }
         }
     }

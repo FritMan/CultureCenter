@@ -43,7 +43,7 @@ namespace CultureCenter.Pages
                 Db.SaveChanges();
                 NavigationSystem.MainFrame.Content = new DataControl();
             }
-            catch (System.Exception ex)
+            catch
             {
 
             }
@@ -68,7 +68,7 @@ namespace CultureCenter.Pages
                 }
                 EventGrid.DataContext = Event;
             }
-            catch (System.Exception)
+            catch
             {
 
             }

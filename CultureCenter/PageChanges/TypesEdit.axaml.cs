@@ -45,10 +45,7 @@ namespace CultureCenter.Pages
                 Db.SaveChanges();
                 NavigationSystem.MainFrame.Content = new ControlTypes();
             }
-            catch (System.Exception ex)
-            {
-
-            }
+            catch { }
         }
 
         private void loadData()
@@ -68,10 +65,7 @@ namespace CultureCenter.Pages
                 }
                 TypesGrid.DataContext = Types;
             }
-            catch (System.Exception ex)
-            {
-
-            }
+            catch { }
         }
     }
 }

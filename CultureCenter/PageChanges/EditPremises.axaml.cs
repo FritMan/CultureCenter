@@ -28,6 +28,7 @@ public partial class EditPremises : UserControl
         _id = id;
         OkBtn.Click += OkBtn_Click;
         BackBtn.Click += BackBtn_Click;
+        loadData();
     }
 
     private void BackBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -46,17 +47,15 @@ public partial class EditPremises : UserControl
             Db.SaveChanges();
             NavigationSystem.MainFrame.Content = new PremisesControl();
         }
-        catch (System.Exception ex)
-        {
-
-        }
+        catch { }
     }
 
     private void loadData()
     {
+
         try
         {
-            Db.Rooms.Load();
+            Db.TypesOfEvents.Load();
 
             if (_id != -1)
             {
@@ -67,11 +66,8 @@ public partial class EditPremises : UserControl
             {
                 Room = new Room();
             }
-            PremisesGrid.DataContext = Room;
+            //RoomsGrid.DataContext = Room;
         }
-        catch (System.Exception ex)
-        {
-
-        }
+        catch { }
     }
 }
