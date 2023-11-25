@@ -1,0 +1,20 @@
+ <UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CultureCenter.PageChanges.EditWorkTypes">
+	 <UniformGrid Name="WorkTypesGrid" Columns="2" Height="300" Width="450">
+		 <Label Content="Тип работы:" VerticalAlignment="Center"
+				HorizontalAlignment="Right"/>
+		 <TextBox Name="NameTb" Text="{Binding Name}" Width="115" Height="30"
+				  TextWrapping="Wrap" AcceptsReturn="True"
+		  VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+		 <Button Name="OkBtn" Content="Ок" Width="100" Height="30"
+				 HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+
+		 <Button Name="BackBtn" Content="Назад" Width="100" Height="30"
+				HorizontalAlignment="Right" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+	 </UniformGrid>
+</UserControl>

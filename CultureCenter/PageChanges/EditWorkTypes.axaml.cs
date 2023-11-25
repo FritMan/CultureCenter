@@ -3,26 +3,28 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using CultureCenter.Classes;
 using CultureCenter.data;
-using CultureCenter.Views;
+using CultureCenter.Pages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Linq;
 using static CultureCenter.Classes.Helper;
 
-namespace CultureCenter.Pages;
+namespace CultureCenter.PageChanges;
 
-public partial class EditPremises : UserControl
+public partial class EditWorkTypes : UserControl
 {
-    private long _id;
-    private Room Room;
-
-    public EditPremises()
+    public EditWorkTypes()
     {
         InitializeComponent();
         loadData();
     }
 
-    public EditPremises(long id)
+    private long _id;
+    private WorkType WorkType;
+
+    public EditWorkTypes(long id)
     {
         InitializeComponent();
         _id = id;
@@ -34,7 +36,7 @@ public partial class EditPremises : UserControl
     private void BackBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         RefreshAll();
-        NavigationSystem.MainFrame.Content = new PremisesControl();
+        NavigationSystem.MainFrame.Content = new TypeOfWork();
     }
     private void OkBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
@@ -42,32 +44,37 @@ public partial class EditPremises : UserControl
         {
             if (_id == -1)
             {
-                Db.Rooms.Add(Room);
+                Db.WorkTypes.Add(WorkType);
             }
             Db.SaveChanges();
-            NavigationSystem.MainFrame.Content = new PremisesControl();
+            NavigationSystem.MainFrame.Content = new TypeOfWork();
         }
-        catch { }
+        catch (System.Exception ex)
+        {
+
+        }
     }
 
     private void loadData()
     {
-
         try
         {
-            Db.Rooms.Load();
+            Db.WorkTypes.Load();
 
             if (_id != -1)
             {
-                Db.Rooms.Load();
-                Room = Db.Rooms.Where(el => el.Id == _id).First();
+                Db.WorkTypes.Load();
+                WorkType = Db.WorkTypes.Where(el => el.Id == _id).First();
             }
             else
             {
-                Room = new Room();
+                WorkType = new WorkType();
             }
-            PremisesGrid.DataContext = Room;
+            WorkTypesGrid.DataContext = WorkType;
         }
-        catch { }
+        catch (System.Exception)
+        {
+
+        }
     }
 }

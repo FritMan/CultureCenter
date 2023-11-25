@@ -19,6 +19,12 @@ public partial class MainView : UserControl
         PremisesBtn.Click += PremisesBtn_Click;
         TypeOfWorkBtn.Click += TypeOfWorkBtn_Click;
         DesktopBtn.Click += DesktopBtn_Click;
+        StatusesBtn.Click += StatusesBtn_Click;
+    }
+
+    private void StatusesBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        NavigationSystem.MainFrame.Content = new StatusControl();
     }
 
     private void DesktopBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

@@ -3,6 +3,7 @@ using CultureCenter.Classes;
 using CultureCenter.data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Linq;
 using System.Security.Cryptography;
 using static CultureCenter.Classes.Helper;
@@ -45,7 +46,10 @@ namespace CultureCenter.Pages
                 Db.SaveChanges();
                 NavigationSystem.MainFrame.Content = new ControlTypes();
             }
-            catch { }
+            catch(Exception ex)
+            { 
+
+            }
         }
 
         private void loadData()

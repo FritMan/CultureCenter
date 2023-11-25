@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using CultureCenter.Classes;
 using CultureCenter.data;
+using CultureCenter.PageChanges;
 using CultureCenter.Views;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -15,9 +16,9 @@ public partial class TypeOfWork : UserControl
     {
         InitializeComponent();
         BackBtn.Click += BackBtn_Click;
-        EditTypeOfWorkBtn.Click += EditTypeOfWorkBtn_Click; ;
+        AddTypeOfWorkBtn.Click += AddTypeOfWorkBtn_Click; ;
         EditTypeOfWorkBtn.Click += EditTypeOfWorkBtn_Click;
-        EditTypeOfWorkBtn.Click += EditTypeOfWorkBtn_Click;
+        DeleteTypeOfWorkBtn.Click += DeleteTypeOfWorkBtn_Click;
         SearchTB.TextChanged += SearchTB_TextChanged;
         LoadData();
     }
@@ -34,28 +35,28 @@ public partial class TypeOfWork : UserControl
 
     private void AddTypeOfWorkBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        NavigationSystem.MainFrame.Content = new EditPremises(-1);
+        NavigationSystem.MainFrame.Content = new PageChanges.EditWorkTypes(-1);
     }
 
     private void EditTypeOfWorkBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var selectedRoom = PremisesDG.SelectedItem as Room;
-        if (selectedRoom != null)
+        var selectedTypes = TypesOfWorkDG.SelectedItem as WorkType;
+        if (selectedTypes != null)
         {
-            NavigationSystem.MainFrame.Content = new EditPremises(selectedRoom.Id);
+            NavigationSystem.MainFrame.Content = new EditWorkTypes(selectedTypes.Id);
         }
     }
 
     private async void DeleteTypeOfWorkBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var selectedRoom = PremisesDG.SelectedItem as Room;
-        if (selectedRoom != null)
+        var selectedTypes = TypesOfWorkDG.SelectedItem as WorkType;
+        if (selectedTypes != null)
         {
             if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Yes)
             {
-                Db.Rooms.Remove(selectedRoom);
+                Db.WorkTypes.Remove(selectedTypes);
                 Db.SaveChanges();
-                NavigationSystem.MainFrame.Content = new EditPremises();
+                NavigationSystem.MainFrame.Content = new TypeOfWork();
             }
         }
     }
@@ -65,11 +66,11 @@ public partial class TypeOfWork : UserControl
         Db.WorkTypes.Load();
         if (string.IsNullOrEmpty(SearchTB.Text))
         {
-            PremisesDG.ItemsSource = Db.WorkTypes;
+            TypesOfWorkDG.ItemsSource = Db.WorkTypes;
         }
         else
         {
-            PremisesDG.ItemsSource = Db.WorkTypes.Where(el => el.Name.Contains(SearchTB.Text));
+            TypesOfWorkDG.ItemsSource = Db.WorkTypes.Where(el => el.Name.Contains(SearchTB.Text));
         }
     }
 }
