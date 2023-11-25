@@ -14,6 +14,7 @@ public partial class TypeOfWork : UserControl
         BackBtn.Click += BackBtn_Click;
     }
 
+
     private void BackBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         NavigationSystem.MainFrame.Content = new MainView();

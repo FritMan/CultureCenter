@@ -17,11 +17,19 @@ public partial class CultureDataBaseContext : DbContext
 
     public virtual DbSet<Event> Events { get; set; }
 
+    public virtual DbSet<Room> Rooms { get; set; }
+
+    public virtual DbSet<Status> Statuses { get; set; }
+
     public virtual DbSet<TypesOfEvent> TypesOfEvents { get; set; }
+
+    public virtual DbSet<WorkOrder> WorkOrders { get; set; }
+
+    public virtual DbSet<WorkType> WorkTypes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlite("data source =.\\DataBase\\CultureDataBase.db");
+        => optionsBuilder.UseSqlite("data source =C:\\Users\\Ансар\\Documents\\Progi\\CultureCenter\\DataBase\\CultureDataBase.db");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -35,9 +43,40 @@ public partial class CultureDataBaseContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
+        modelBuilder.Entity<Room>(entity =>
+        {
+            entity.ToTable("Room");
+        });
+
+        modelBuilder.Entity<Status>(entity =>
+        {
+            entity.ToTable("Status");
+        });
+
         modelBuilder.Entity<TypesOfEvent>(entity =>
         {
             entity.Property(e => e.Name).HasColumnType("TEXT (35)");
+        });
+
+        modelBuilder.Entity<WorkOrder>(entity =>
+        {
+            entity.ToTable("WorkOrder");
+
+            entity.HasOne(d => d.Events).WithMany(p => p.WorkOrders)
+                .HasForeignKey(d => d.EventsId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.Room).WithMany(p => p.WorkOrders)
+                .HasForeignKey(d => d.RoomId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.Status).WithMany(p => p.WorkOrders)
+                .HasForeignKey(d => d.StatusId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.WorkTypes).WithMany(p => p.WorkOrders)
+                .HasForeignKey(d => d.WorkTypesId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
         OnModelCreatingPartial(modelBuilder);

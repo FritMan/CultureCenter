@@ -14,4 +14,6 @@ public partial class Event
     public long TypesId { get; set; }
 
     public virtual TypesOfEvent Types { get; set; } = null!;
+
+    public virtual ICollection<WorkOrder> WorkOrders { get; } = new List<WorkOrder>();
 }
