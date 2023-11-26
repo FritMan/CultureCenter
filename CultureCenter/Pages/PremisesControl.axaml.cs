@@ -50,16 +50,20 @@ public partial class PremisesControl : UserControl
 
     private async void DeletePremisesBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var selectedRoom = PremisesDG.SelectedItem as Room;
-        if (selectedRoom != null)
+        try
         {
-            if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Yes)
+            var selectedRoom = PremisesDG.SelectedItem as Room;
+            if (selectedRoom != null)
             {
-                Db.Rooms.Remove(selectedRoom);
-                Db.SaveChanges();
-                NavigationSystem.MainFrame.Content = new PremisesControl();
+                if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Yes)
+                {
+                    Db.Rooms.Remove(selectedRoom);
+                    Db.SaveChanges();
+                    NavigationSystem.MainFrame.Content = new PremisesControl();
+                }
             }
         }
+        catch { }
     }
 
     private void LoadData()

@@ -49,16 +49,20 @@ public partial class TypeOfWork : UserControl
 
     private async void DeleteTypeOfWorkBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        var selectedTypes = TypesOfWorkDG.SelectedItem as WorkType;
-        if (selectedTypes != null)
+        try
         {
-            if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Yes)
+            var selectedTypes = TypesOfWorkDG.SelectedItem as WorkType;
+            if (selectedTypes != null)
             {
-                Db.WorkTypes.Remove(selectedTypes);
-                Db.SaveChanges();
-                NavigationSystem.MainFrame.Content = new TypeOfWork();
+                if (await ShowQuestion("Вы уверены?") == MsBox.Avalonia.Enums.ButtonResult.Yes)
+                {
+                    Db.WorkTypes.Remove(selectedTypes);
+                    Db.SaveChanges();
+                    NavigationSystem.MainFrame.Content = new TypeOfWork();
+                }
             }
         }
+        catch { }
     }
 
     private void LoadData()

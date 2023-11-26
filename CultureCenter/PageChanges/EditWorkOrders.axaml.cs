@@ -15,7 +15,7 @@ namespace CultureCenter.PageChanges;
 public partial class EditWorkOrders : UserControl
 {
     private long _id;
-    private WorkOrder Order;
+    private WorkOrder workOrder;
     public EditWorkOrders()
     {
         InitializeComponent();
@@ -41,11 +41,11 @@ public partial class EditWorkOrders : UserControl
     {
         try
         {
-            Order.DateStart = DateStartCmb.SelectedDate.Value.ToString("d");
-            Order.DateEnd = DateEndCmb.SelectedDate.Value.ToString("d");
+            workOrder.DateStart = DateStartCmb.SelectedDate.Value.ToString("d");
+            workOrder.DateEnd = DateEndCmb.SelectedDate.Value.ToString("d");
             if(_id == -1)
             {
-                Db.WorkOrders.Add(Order);
+                Db.WorkOrders.Add(workOrder);
             }
             Db.SaveChanges();
             NavigationSystem.MainFrame.Content = new ApplicationControl();
@@ -77,15 +77,15 @@ public partial class EditWorkOrders : UserControl
             {
                 Db.WorkOrders.Load();
 
-                Order = Db.WorkOrders.Where(el => el.Id == _id).First();
-                DateStartCmb.SelectedDate = DateTime.Parse(Order.DateStart);
-                DateEndCmb.SelectedDate = DateTime.Parse(Order.DateEnd);
+                workOrder = Db.WorkOrders.Where(el => el.Id == _id).First();
+                DateStartCmb.SelectedDate = DateTime.Parse(workOrder.DateStart);
+                DateEndCmb.SelectedDate = DateTime.Parse(workOrder.DateEnd);
             }
             else
             {
-                Order = new WorkOrder();
+                workOrder = new WorkOrder();
             }
-            WorkOrderGrid.DataContext = Order;
+            WorkOrderGrid.DataContext = workOrder;
         }
         catch{ }
     }

@@ -43,10 +43,7 @@ public partial class ApplicationControl : UserControl
                 }
             }
         }
-        catch(Exception ex)
-        {
-            
-        }
+        catch{ }
     }
 
     private void EditApplicationBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

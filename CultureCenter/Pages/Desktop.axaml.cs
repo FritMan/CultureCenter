@@ -13,10 +13,16 @@ public partial class Desktop : UserControl
     {
         InitializeComponent();
         BackBtn.Click += BackBtn_Click;
+        LoadData();
     }
 
     private void BackBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         NavigationSystem.MainFrame.Content = new MainView();
+    }
+
+    private void LoadData()
+    {
+        
     }
 }
