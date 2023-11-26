@@ -20,7 +20,13 @@
 		<DataGrid Name="ApplicationDG" Grid.Column="0" Grid.Row="1" BorderBrush="Black"
 		   BorderThickness="5" Margin="5" IsReadOnly="True">
 			<DataGrid.Columns>
-				<DataGridTextColumn Header="Заявки:"/>
+				<DataGridTextColumn Header="Дата регистрации:" Binding ="{Binding DateStart}"/>
+				<DataGridTextColumn Header="Мероприятие:" Binding ="{Binding Events.Types.Name}"/>
+				<DataGridTextColumn Header="Вид работы:" Binding ="{Binding WorkTypes.Name}"/>
+				<DataGridTextColumn Header="Помещение:" Binding ="{Binding Room.Name}"/>
+				<DataGridTextColumn Header="Срок выполнения(до):" Binding ="{Binding DateEnd}"/>
+				<DataGridTextColumn Header="Описание:" Binding ="{Binding Description}"/>
+				<DataGridTextColumn Header="Статус:" Binding ="{Binding Status.Name}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 
