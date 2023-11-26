@@ -94,7 +94,7 @@ public partial class ApplicationControl : UserControl
         }
         else
         {
-            ApplicationDG.ItemsSource = Db.WorkOrders.Where(el => el.Description.Contains(SearchTB.Text));
+            ApplicationDG.ItemsSource = Db.WorkOrders.Where(el => el.WorkTypes.Name.Contains(SearchTB.Text));
         }
     }
 

@@ -17,7 +17,7 @@
 		        Width="150" HorizontalContentAlignment="Center"/>
 	  <Button Name ="PremisesBtn" Content ="Помещения" HorizontalAlignment="Center" Margin="5"
 	            Width="150" HorizontalContentAlignment="Center"/>
-	  <Button Name ="TypeOfWorkBtn" Content ="Типы работы" HorizontalAlignment="Center" Margin="5"
+	  <Button Name ="TypeOfWorkBtn" Content ="Виды работы" HorizontalAlignment="Center" Margin="5"
 	            Width="150" HorizontalContentAlignment="Center"/>
 	  <Button Name ="StatusesBtn" Content ="Статусы" HorizontalAlignment="Center" Margin="5"
 			Width="150" HorizontalContentAlignment="Center"/>
