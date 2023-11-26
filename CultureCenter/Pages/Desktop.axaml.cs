@@ -57,11 +57,11 @@ public partial class Desktop : UserControl
         DesktopDG.ItemsSource = Db.WorkOrders.Where(el => el.StatusId == 2);
         if (string.IsNullOrEmpty(SearchTB.Text))
         {
-            DesktopDG.ItemsSource = Db.WorkOrders;
+               DesktopDG.ItemsSource = Db.WorkOrders.Where(el => el.StatusId == 2);
         }
         else
         {
-            DesktopDG.ItemsSource = Db.WorkOrders.Where(el => el.WorkTypes.Name.Contains(SearchTB.Text));
+            DesktopDG.ItemsSource = Db.WorkOrders.Where(el => el.StatusId == 2).Where(el => el.WorkTypes.Name.Contains(SearchTB.Text));
         }
     }
 }

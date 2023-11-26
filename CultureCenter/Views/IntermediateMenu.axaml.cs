@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using CultureCenter.Classes;
+using CultureCenter.data;
 using CultureCenter.Pages;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using static CultureCenter.Classes.Helper;
@@ -15,8 +16,38 @@ namespace CultureCenter.Views
             EventBtn.Click += EventBtn_Click;
             TypesEventBtn.Click += TypesEventBtn_Click;
             BackBtn.Click += BackBtn_Click;
+            ApplicationsBtn.Click += ApplicationsBtn_Click;
+            TypeOfWorkBtn.Click += TypeOfWorkBtn_Click;
+            PremisesBtn.Click += PremisesBtn_Click;
+            StatusesBtn.Click += StatusesBtn_Click;
+            DesktopBtn.Click += DesktopBtn_Click;
+
         }
 
+        private void DesktopBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            NavigationSystem.MainFrame.Content = new Desktop();
+        }
+
+        private void StatusesBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            NavigationSystem.MainFrame.Content = new StatusControl();
+        }
+
+        private void PremisesBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            NavigationSystem.MainFrame.Content = new PremisesControl();
+        }
+
+        private void TypeOfWorkBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            NavigationSystem.MainFrame.Content = new TypeOfWork();
+        }
+
+        private void ApplicationsBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            NavigationSystem.MainFrame.Content = new ApplicationControl();
+        }
 
         private void BackBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
