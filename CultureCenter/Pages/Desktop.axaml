@@ -17,10 +17,16 @@
 			<TextBox Name="SearchTB" Background="LightGray" Height="20" Width="90"/>
 		</StackPanel>
 
-		<DataGrid Name="PremisesDG" Grid.Column="0" Grid.Row="1" BorderBrush="Black"
+		<DataGrid Name="DesktopDG" Grid.Column="0" Grid.Row="1" BorderBrush="Black"
 		   BorderThickness="5" Margin="5" IsReadOnly="True">
 			<DataGrid.Columns>
-				<DataGridTextColumn Header="Заявки к выполнению:"/>
+				<DataGridTextColumn Header="Мероприятие:" Binding ="{Binding Events.Description}"/>
+				<DataGridTextColumn Header="Вид работы:" Binding ="{Binding WorkTypes.Name}"/>
+				<DataGridTextColumn Header="Помещение:" Binding ="{Binding Room.Name}"/>
+				<DataGridTextColumn Header="Статус:" Binding ="{Binding Status.Name}"/>
+				<DataGridTextColumn Header="Дата регистрации:" Binding ="{Binding DateStart}"/>
+				<DataGridTextColumn Header="Срок выполнения(до):" Binding ="{Binding DateEnd}"/>
+				<DataGridTextColumn Header="Описание:" Binding ="{Binding Description}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 	</Grid>

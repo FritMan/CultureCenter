@@ -67,7 +67,6 @@ public partial class EditWorkOrders : UserControl
             Db.Statuses.Load();
             Db.WorkTypes.Load();
 
-            EventCb.ItemsSource = Db.TypesOfEvents.ToList();
             RoomCb.ItemsSource = Db.Rooms.ToList();
             StatusCb.ItemsSource= Db.Statuses.ToList();
             WorkTypesCb.ItemsSource = Db.WorkTypes.ToList();
@@ -76,6 +75,11 @@ public partial class EditWorkOrders : UserControl
             if (_id == -1)
             {
                 Db.WorkOrders.Load();
+                Db.TypesOfEvents.Load();
+                Db.Events.Load();
+                Db.Rooms.Load();
+                Db.Statuses.Load();
+                Db.WorkTypes.Load();
 
                 workOrder = Db.WorkOrders.Where(el => el.Id == _id).First();
                 DateStartCmb.SelectedDate = DateTime.Parse(workOrder.DateStart);
