@@ -8,7 +8,7 @@
 		
 		<Label Content="Мероприятие:" VerticalAlignment="Center"
 				 HorizontalAlignment="Left"/>
-		<ComboBox Name="EventCb" SelectedItem ="{Binding Events}" Width="100" Height="30"
+		<ComboBox Name="EventCb" SelectedItem ="{Binding Events}" Width="125" Height="30"
 		 VerticalAlignment="Center" HorizontalAlignment="Left">
 			<ComboBox.ItemTemplate>
 				<DataTemplate>
