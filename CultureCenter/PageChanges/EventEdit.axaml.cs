@@ -43,10 +43,7 @@ namespace CultureCenter.Pages
                 Db.SaveChanges();
                 NavigationSystem.MainFrame.Content = new DataControl();
             }
-            catch
-            {
-
-            }
+            catch{ }
         }
 
         private void loadData()

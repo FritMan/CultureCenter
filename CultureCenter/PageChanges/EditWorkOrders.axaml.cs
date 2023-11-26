@@ -50,7 +50,7 @@ public partial class EditWorkOrders : UserControl
             Db.SaveChanges();
             NavigationSystem.MainFrame.Content = new ApplicationControl();
         }
-        catch(Exception ex)
+        catch
         {
 
         }
@@ -87,10 +87,7 @@ public partial class EditWorkOrders : UserControl
             }
             WorkOrderGrid.DataContext = WorkOrder;
         }
-        catch (Exception ex)
-        {
-
-        }
+        catch { }
     }
 
 }

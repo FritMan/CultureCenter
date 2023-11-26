@@ -4,13 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CultureCenter.PageChanges.EditWorkOrders">
-	<UniformGrid Name="WorkOrderGrid" Columns="2" Height="400" Width="450">
-		<Label Content="Описание:" VerticalAlignment="Center"
-			   HorizontalAlignment="Right"/>
-
+	<UniformGrid Name="WorkOrderGrid" Columns="2" Height="450" Width="350">
+		
 		<Label Content="Мероприятие:" VerticalAlignment="Center"
-	   HorizontalAlignment="Left"/>
-		<ComboBox Name="EventCb" SelectedItem ="{Binding Events.Types}" Width="100" Height="30"
+				 HorizontalAlignment="Left"/>
+		<ComboBox Name="EventCb" SelectedItem ="{Binding Events.Types}" Width="125" Height="30"
 				 VerticalAlignment="Center" HorizontalAlignment="Left">
 			<ComboBox.ItemTemplate>
 				<DataTemplate>
@@ -18,10 +16,11 @@
 				</DataTemplate>
 			</ComboBox.ItemTemplate>
 		</ComboBox>
-
+		
+			
 		<Label Content="Помещение:" VerticalAlignment="Center"
-	   HorizontalAlignment="Left"/>
-		<ComboBox Name="RoomCb" SelectedItem ="{Binding Room}" Width="100" Height="30"
+				 HorizontalAlignment="Left"/>
+		<ComboBox Name="RoomCb" SelectedItem ="{Binding Room}" Width="125" Height="30"
 				 VerticalAlignment="Center" HorizontalAlignment="Left">
 			<ComboBox.ItemTemplate>
 				<DataTemplate>
@@ -31,8 +30,8 @@
 		</ComboBox>
 
 		<Label Content="Статус:" VerticalAlignment="Center"
-	   HorizontalAlignment="Left"/>
-		<ComboBox Name="StatusCb" SelectedItem ="{Binding Status}" Width="100" Height="30"
+				 HorizontalAlignment="Left"/>
+		<ComboBox Name="StatusCb" SelectedItem ="{Binding Status}" Width="125" Height="30"
 				 VerticalAlignment="Center" HorizontalAlignment="Left">
 			<ComboBox.ItemTemplate>
 				<DataTemplate>
@@ -42,9 +41,9 @@
 		</ComboBox>
 		
 		<Label Content="Тип работы:" VerticalAlignment="Center"
-	   HorizontalAlignment="Left"/>
-		<ComboBox Name="WorkTypesCb" SelectedItem ="{Binding WorkTypes}" Width="100" Height="30"
-		 VerticalAlignment="Center" HorizontalAlignment="Left">
+				HorizontalAlignment="Left"/>
+		<ComboBox Name="WorkTypesCb" SelectedItem ="{Binding WorkTypes}" Width="125" Height="30"
+				VerticalAlignment="Center" HorizontalAlignment="Left">
 			<ComboBox.ItemTemplate>
 				<DataTemplate>
 					<Label Content="{Binding Name}"/>
@@ -53,23 +52,25 @@
 		</ComboBox>
 
 		<Label Content="Дата регистрации:" VerticalAlignment="Center"
-			   HorizontalAlignment="Left"/>
-		<CalendarDatePicker Name="DateStartCmb" Text="{Binding DateStart}" Width="100" Height="30"
-				 VerticalAlignment="Center" HorizontalAlignment="Left"/>
+				HorizontalAlignment="Left"/>
+		<CalendarDatePicker Name="DateStartCmb" Text="{Binding DateStart}" Width="125" Height="30"
+				VerticalAlignment="Center" HorizontalAlignment="Left"/>
 		
 		<Label Content="Срок выполнения(до):" VerticalAlignment="Center"
-	   HorizontalAlignment="Left"/>
-		<CalendarDatePicker Name="DateEndCmb" Text="{Binding DateEnd}" Width="100" Height="30"
-				 VerticalAlignment="Center" HorizontalAlignment="Left"/>
+				HorizontalAlignment="Left"/>
+		<CalendarDatePicker Name="DateEndCmb" Text="{Binding DateEnd}" Width="125" Height="30"
+				VerticalAlignment="Center" HorizontalAlignment="Left"/>
 
-		<TextBox Name="DescriptionTb" Text="{Binding Description}" Width="100" Height="100"
-		 TextWrapping="Wrap" AcceptsReturn="True"
-		VerticalAlignment="Center" HorizontalAlignment="Left"/>
+		<Label Content="Описание:" VerticalAlignment="Center"
+				HorizontalAlignment="Left"/>
+		<TextBox Name="DescriptionTb" Text="{Binding Description}" Width="125" Height="50"
+				TextWrapping="Wrap" AcceptsReturn="True"
+					VerticalAlignment="Center" HorizontalAlignment="Left"/>
 
 		<Button Name="OkBtn" Content="Ок" Width="100" Height="30"
 				HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
 
 		<Button Name="BackBtn" Content="Назад" Width="100" Height="30"
-			   HorizontalAlignment="Right" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+			    HorizontalAlignment="Right" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
 	</UniformGrid>
 </UserControl>

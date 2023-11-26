@@ -49,7 +49,7 @@ public partial class EditWorkTypes : UserControl
             Db.SaveChanges();
             NavigationSystem.MainFrame.Content = new TypeOfWork();
         }
-        catch (System.Exception ex)
+        catch
         {
 
         }
@@ -72,9 +72,6 @@ public partial class EditWorkTypes : UserControl
             }
             WorkTypesGrid.DataContext = WorkType;
         }
-        catch (System.Exception)
-        {
-
-        }
+        catch{ }
     }
 }
