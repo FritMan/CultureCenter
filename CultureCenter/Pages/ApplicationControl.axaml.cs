@@ -28,6 +28,11 @@ public partial class ApplicationControl : UserControl
         DeleteApplicationBtn.Click += DeleteApplicationBtn_Click;
     }
 
+    private void SearchTB_TextChanged(object? sender, TextChangedEventArgs e)
+    {
+        LoadData();
+    }
+
     private async void DeleteApplicationBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         try
@@ -60,10 +65,6 @@ public partial class ApplicationControl : UserControl
         NavigationSystem.MainFrame.Content = new EditWorkOrders(-1);
     }
 
-    private void SearchTB_TextChanged(object? sender, TextChangedEventArgs e)
-    {
-        LoadData();
-    }
 
     private void ApplicationDG_LoadingRow(object? sender, DataGridRowEventArgs e)
     {

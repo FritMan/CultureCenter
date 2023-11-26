@@ -8,9 +8,14 @@
 		
 		<Label Content="Мероприятие:" VerticalAlignment="Center"
 				 HorizontalAlignment="Left"/>
-		<TextBox Name="EventTb" Text="{Binding Events.Description}" Width="115" Height="30"
-		 TextWrapping="Wrap" AcceptsReturn="True"
-		VerticalAlignment="Center" HorizontalAlignment="Left"/>
+		<ComboBox Name="EventCb" SelectedItem ="{Binding Events}" Width="100" Height="30"
+		 VerticalAlignment="Center" HorizontalAlignment="Left">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Label Content="{Binding Description}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
 		
 			
 		<Label Content="Помещение:" VerticalAlignment="Center"

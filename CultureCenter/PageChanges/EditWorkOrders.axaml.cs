@@ -15,7 +15,8 @@ namespace CultureCenter.PageChanges;
 public partial class EditWorkOrders : UserControl
 {
     private long _id;
-    private WorkOrder workOrder;
+    private WorkOrder WorkOrder;
+        
     public EditWorkOrders()
     {
         InitializeComponent();
@@ -25,35 +26,10 @@ public partial class EditWorkOrders : UserControl
     public EditWorkOrders(long id)
     {
         InitializeComponent();
-        LoadData();
         _id = id;
         OkBtn.Click += OkBtn_Click;
         BackBtn.Click += BackBtn_Click;
-    }
-
-    private void BackBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-    {
-        RefreshAll();
-        NavigationSystem.MainFrame.Content = new ApplicationControl();
-    }
-
-    private void OkBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-    {
-        try
-        {
-            workOrder.DateStart = DateStartCmb.SelectedDate.Value.ToString("d");
-            workOrder.DateEnd = DateEndCmb.SelectedDate.Value.ToString("d");
-            if(_id == -1)
-            {
-                Db.WorkOrders.Add(workOrder);
-            }
-            Db.SaveChanges();
-            NavigationSystem.MainFrame.Content = new ApplicationControl();
-        }
-        catch
-        {
-
-        }
+        LoadData();
     }
 
     private void LoadData()
@@ -67,31 +43,62 @@ public partial class EditWorkOrders : UserControl
             Db.Statuses.Load();
             Db.WorkTypes.Load();
 
+            EventCb.ItemsSource = Db.Events.ToList();
             RoomCb.ItemsSource = Db.Rooms.ToList();
-            StatusCb.ItemsSource= Db.Statuses.ToList();
+            StatusCb.ItemsSource = Db.Statuses.ToList();
             WorkTypesCb.ItemsSource = Db.WorkTypes.ToList();
 
 
-            if (_id == -1)
+            if (_id != -1)
             {
-                Db.WorkOrders.Load();
                 Db.TypesOfEvents.Load();
                 Db.Events.Load();
                 Db.Rooms.Load();
+                Db.WorkOrders.Load();
                 Db.Statuses.Load();
                 Db.WorkTypes.Load();
 
-                workOrder = Db.WorkOrders.Where(el => el.Id == _id).First();
-                DateStartCmb.SelectedDate = DateTime.Parse(workOrder.DateStart);
-                DateEndCmb.SelectedDate = DateTime.Parse(workOrder.DateEnd);
+                WorkOrder = Db.WorkOrders.Where(el => el.Id == _id).First();
+                DateStartCmb.SelectedDate = DateTime.Parse(WorkOrder.DateStart);
+                DateEndCmb.SelectedDate = DateTime.Parse(WorkOrder.DateEnd);
+                RoomCb.SelectedIndex = 0;
+                StatusCb.SelectedIndex = 0;
+                WorkTypesCb.SelectedIndex = 0;
+                EventCb.SelectedIndex = 0;
             }
             else
             {
-                workOrder = new WorkOrder();
+                WorkOrder = new WorkOrder();
             }
-            WorkOrderGrid.DataContext = workOrder;
+
+            WorkOrderGrid.DataContext = WorkOrder;
         }
-        catch{ }
+        catch { }
+    }
+    private void BackBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        RefreshAll();
+        NavigationSystem.MainFrame.Content = new ApplicationControl();
+    }
+
+    private void OkBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        try
+        {
+            WorkOrder.DateStart = DateStartCmb.SelectedDate.Value.ToString("d");
+            WorkOrder.DateEnd = DateEndCmb.SelectedDate.Value.ToString("d");
+
+            if (_id == -1)
+            {
+                Db.WorkOrders.Add(WorkOrder);
+            }
+            Db.SaveChanges();
+            NavigationSystem.MainFrame.Content = new ApplicationControl();
+        }
+        catch(Exception ex)
+        {
+            
+        }
     }
 
 }
