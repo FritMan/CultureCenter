@@ -14,7 +14,7 @@ namespace CultureCenter.Pages;
 
 public partial class Desktop : UserControl
 {
-    private WorkOrder WorkOrder
+    private WorkOrder WorkOrder;
     public Desktop()
     {
         InitializeComponent();
@@ -55,7 +55,7 @@ public partial class Desktop : UserControl
         Db.Events.Load();
         DesktopDG.ItemsSource = null;
         DesktopDG.ItemsSource = Db.WorkOrders.Where(el => el.StatusId == 2);
-        if (string.IsNullOrEmpty(SearchTB.Text) && WorkOrder.StatusId == 2)
+        if (string.IsNullOrEmpty(SearchTB.Text))
         {
             DesktopDG.ItemsSource = Db.WorkOrders;
         }
