@@ -15,12 +15,6 @@ public partial class WorkOrder
 
     public long WorkTypesId { get; set; }
 
-    public string DateStart { get; set; } = null!;
-
-    public string DateEnd { get; set; } = null!;
-
-    public string? Description { get; set; }
-
     public virtual Event Events { get; set; } = null!;
 
     public virtual Room Room { get; set; } = null!;
