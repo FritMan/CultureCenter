@@ -14,7 +14,7 @@ namespace CultureCenter.Pages;
 public partial class EditPremises : UserControl
 {
     private long _id;
-    private Room Room;
+    private Room room;
 
     public EditPremises()
     {
@@ -42,7 +42,7 @@ public partial class EditPremises : UserControl
         {
             if (_id == -1)
             {
-                Db.Rooms.Add(Room);
+                Db.Rooms.Add(room);
             }
             Db.SaveChanges();
             NavigationSystem.MainFrame.Content = new PremisesControl();
@@ -60,14 +60,14 @@ public partial class EditPremises : UserControl
             if (_id != -1)
             {
                 Db.Rooms.Load();
-                Room = Db.Rooms.Where(el => el.Id == _id).First();
+                room = Db.Rooms.Where(el => el.Id == _id).First();
             }
             else
             {
-                Room = new Room();
+                room = new Room();
             }
-            PremisesGrid.DataContext = Room;
+            PremisesGrid.DataContext = room;
         }
-        catch { }
+        catch{ }
     }
 }

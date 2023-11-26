@@ -22,7 +22,7 @@ public partial class EditWorkTypes : UserControl
     }
 
     private long _id;
-    private WorkType WorkType;
+    private WorkType workType;
 
     public EditWorkTypes(long id)
     {
@@ -44,7 +44,7 @@ public partial class EditWorkTypes : UserControl
         {
             if (_id == -1)
             {
-                Db.WorkTypes.Add(WorkType);
+                Db.WorkTypes.Add(workType);
             }
             Db.SaveChanges();
             NavigationSystem.MainFrame.Content = new TypeOfWork();
@@ -64,13 +64,13 @@ public partial class EditWorkTypes : UserControl
             if (_id != -1)
             {
                 Db.WorkTypes.Load();
-                WorkType = Db.WorkTypes.Where(el => el.Id == _id).First();
+                workType = Db.WorkTypes.Where(el => el.Id == _id).First();
             }
             else
             {
-                WorkType = new WorkType();
+                workType = new WorkType();
             }
-            WorkTypesGrid.DataContext = WorkType;
+            WorkTypesGrid.DataContext = workType;
         }
         catch{ }
     }
