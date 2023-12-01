@@ -13,9 +13,11 @@ namespace CultureCenter.Pages;
 
 public partial class PremisesControl : UserControl
 {
-    public PremisesControl()
+    private int _backPath = 0;
+    public PremisesControl(int backPath)
     {
         InitializeComponent();
+        _backPath = backPath;
         BackBtn.Click += BackBtn_Click;
         AddPremisesBtn.Click += AddPremisesBtn_Click; ;
         EditPremisesBtn.Click += EditPremisesBtn_Click;
@@ -31,7 +33,7 @@ public partial class PremisesControl : UserControl
 
     private void AddPremisesBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        NavigationSystem.MainFrame.Content = new EditPremises(-1);
+        NavigationSystem.MainFrame.Content = new EditPremises(-1, _backPath);
     }
 
     private void EditPremisesBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -39,13 +41,20 @@ public partial class PremisesControl : UserControl
         var selectedRoom = PremisesDG.SelectedItem as Room;
         if (selectedRoom != null)
         {
-            NavigationSystem.MainFrame.Content = new EditPremises(selectedRoom.Id);
+            NavigationSystem.MainFrame.Content = new EditPremises(selectedRoom.Id, _backPath);
         }
     }
 
     private void BackBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        NavigationSystem.MainFrame.Content = new MainView();
+        if(_backPath == 0)
+        {
+            NavigationSystem.MainFrame.Content = new IntermediateMenu();
+        }
+        else
+        {
+            NavigationSystem.MainFrame.Content = new ControlEducation();
+        }
     }
 
     private async void DeletePremisesBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -59,7 +68,7 @@ public partial class PremisesControl : UserControl
                 {
                     Db.Rooms.Remove(selectedRoom);
                     Db.SaveChanges();
-                    NavigationSystem.MainFrame.Content = new PremisesControl();
+                    NavigationSystem.MainFrame.Content = new PremisesControl(_backPath);
                 }
             }
         }

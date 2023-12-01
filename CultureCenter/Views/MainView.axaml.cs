@@ -19,19 +19,19 @@ public partial class MainView : UserControl
 
     private void EducationBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        PartName = "Образовательные";
+        PartName = "Образование";
         NavigationSystem.MainFrame.Content = new ControlEducation();
     }
 
     private void EntertainmentsBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        PartName = "Развлекательные";
+        PartName = "Развлечения";
         NavigationSystem.MainFrame.Content = new IntermediateMenu();
     }
 
     private void EnlightenmentBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        PartName = "Просветительские";
+        PartName = "Просвещение";
         NavigationSystem.MainFrame.Content = new IntermediateMenu();
     }
 

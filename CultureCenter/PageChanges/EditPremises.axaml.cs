@@ -15,17 +15,13 @@ public partial class EditPremises : UserControl
 {
     private long _id;
     private Room room;
+    private int _backPath = 0;
 
-    public EditPremises()
-    {
-        InitializeComponent();
-        loadData();
-    }
-
-    public EditPremises(long id)
+    public EditPremises(long id, int backPath)
     {
         InitializeComponent();
         _id = id;
+        _backPath = backPath;
         OkBtn.Click += OkBtn_Click;
         BackBtn.Click += BackBtn_Click;
         loadData();
@@ -34,7 +30,7 @@ public partial class EditPremises : UserControl
     private void BackBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
         RefreshAll();
-        NavigationSystem.MainFrame.Content = new PremisesControl();
+        NavigationSystem.MainFrame.Content = new PremisesControl(_backPath);
     }
     private void OkBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
@@ -45,9 +41,11 @@ public partial class EditPremises : UserControl
                 Db.Rooms.Add(room);
             }
             Db.SaveChanges();
-            NavigationSystem.MainFrame.Content = new PremisesControl();
+            NavigationSystem.MainFrame.Content = new PremisesControl(_backPath);
         }
-        catch { }
+        catch 
+        { 
+        }
     }
 
     private void loadData()

@@ -36,7 +36,7 @@ namespace CultureCenter.Views
 
         private void PremisesBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            NavigationSystem.MainFrame.Content = new PremisesControl();
+            NavigationSystem.MainFrame.Content = new PremisesControl(0);
         }
 
         private void TypeOfWorkBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

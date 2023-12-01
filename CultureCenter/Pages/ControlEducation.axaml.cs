@@ -15,12 +15,12 @@ namespace CultureCenter.Pages
 
         private void EnlightenmentBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            NavigationSystem.MainFrame.Content = new PremisesControl();
+            NavigationSystem.MainFrame.Content = new PremisesControl(1);
         }
 
         private void BackBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            NavigationSystem.MainFrame.Content = new IntermediateMenu();
+            NavigationSystem.MainFrame.Content = new MainView();
         }
     }
 }
