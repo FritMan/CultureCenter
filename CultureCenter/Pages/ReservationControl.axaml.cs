@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using CultureCenter.Classes;
 using CultureCenter.data;
+using CultureCenter.PageChanges;
 using CultureCenter.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -51,7 +52,7 @@ namespace CultureCenter.Pages
 
         private async void DeleteBookingBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-           /* try
+           try
             {
                 var selectedBooking = ReservationDG.SelectedItem as Booking;
                 if (selectedBooking != null)
@@ -73,23 +74,23 @@ namespace CultureCenter.Pages
             {
 
             }
-           */
+           
         }
 
         private void EditBookingBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            /*
+            
             var selectedBooking = ReservationDG.SelectedItem as Booking;
             if (selectedBooking != null)
             {
                 NavigationSystem.MainFrame.Content = new EditBooking(selectedBooking.Id);
             }
-            */
+            
         }
 
         private void AddBookingBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-           // NavigationSystem.MainFrame.Content = new EditBooking();
+           NavigationSystem.MainFrame.Content = new EditBooking(-1);
         }
     }
 }
