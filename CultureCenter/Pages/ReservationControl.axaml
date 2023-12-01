@@ -20,16 +20,21 @@
     <DataGrid Name="ReservationDG" Grid.Column="0" Grid.Row="1" BorderBrush="Black"
 				  BorderThickness="5" Margin="5" IsReadOnly="True">
       <DataGrid.Columns>
-        <DataGridTextColumn Header="Дата:" Binding="{Binding EventDate}"/>
-        <DataGridTextColumn Header="Вид мероприятия:" Binding="{Binding Types.Name}"/>
-        <DataGridTextColumn Header="Описание:" Binding="{Binding Description}"/>
+        <DataGridTextColumn Header="Дата создания:" Binding="{Binding DataCreation}"/>
+        <DataGridTextColumn Header="Мероприятие:" Binding ="{Binding Events.Description}"/>
+        <DataGridTextColumn Header ="Дата начала бронирования:" Binding="{Binding DataStart}"/>
+        <DataGridTextColumn Header ="Дата окончания бронирования:" Binding="{Binding DataEnd}"/>
+        <DataGridTextColumn Header ="Время начала бронирования:" Binding="{Binding TimeStart}"/>
+        <DataGridTextColumn Header ="Время окончания бронирования:" Binding="{Binding TimeEnd}"/>
+        <DataGridTextColumn Header="Помещение:" Binding="{Binding Room.Name}"/>
+        <DataGridTextColumn Header ="Комментарий:" Binding="{Binding Comment}"/>
       </DataGrid.Columns>
     </DataGrid>
 
     <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center">
-      <Button Name="AddEventBtn" Content="Добавить" Margin="5"/>
-      <Button Name="EditEventBtn" Content="Изменить" Margin="5"/>
-      <Button Name="DeleteEventBtn" Content="Удалить" Background="Red" Margin="5"/>
+      <Button Name="AddBookingBtn" Content="Добавить" Margin="5"/>
+      <Button Name="EditBookingBtn" Content="Изменить" Margin="5"/>
+      <Button Name="DeleteBookingBtn" Content="Удалить" Background="Red" Margin="5"/>
     </StackPanel>
   </Grid>
 </UserControl>

@@ -21,7 +21,13 @@ namespace CultureCenter.Views
             PremisesBtn.Click += PremisesBtn_Click;
             StatusesBtn.Click += StatusesBtn_Click;
             DesktopBtn.Click += DesktopBtn_Click;
+            ReservationBtn.Click += ReservationBtn_Click;
 
+        }
+
+        private void ReservationBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            NavigationSystem.MainFrame.Content = new ReservationControl();
         }
 
         private void DesktopBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -64,6 +70,8 @@ namespace CultureCenter.Views
         {
             NavigationSystem.MainFrame.Content = new DataControl();
         }
+
+
 
 
     }
