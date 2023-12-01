@@ -13,6 +13,8 @@ public partial class Event
 
     public long TypesId { get; set; }
 
+    public virtual ICollection<Booking> Bookings { get; } = new List<Booking>();
+
     public virtual TypesOfEvent Types { get; set; } = null!;
 
     public virtual ICollection<WorkOrder> WorkOrders { get; } = new List<WorkOrder>();

@@ -15,6 +15,8 @@ public partial class CultureDataBaseContext : DbContext
     {
     }
 
+    public virtual DbSet<Booking> Bookings { get; set; }
+
     public virtual DbSet<Event> Events { get; set; }
 
     public virtual DbSet<Room> Rooms { get; set; }
@@ -33,6 +35,19 @@ public partial class CultureDataBaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Booking>(entity =>
+        {
+            entity.ToTable("Booking");
+
+            entity.HasOne(d => d.Events).WithMany(p => p.Bookings)
+                .HasForeignKey(d => d.EventsId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.Room).WithMany(p => p.Bookings)
+                .HasForeignKey(d => d.RoomId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        });
+
         modelBuilder.Entity<Event>(entity =>
         {
             entity.Property(e => e.Description).HasColumnType("TEXT (100)");

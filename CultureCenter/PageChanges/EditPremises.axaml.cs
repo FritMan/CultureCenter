@@ -43,9 +43,7 @@ public partial class EditPremises : UserControl
             Db.SaveChanges();
             NavigationSystem.MainFrame.Content = new PremisesControl(_backPath);
         }
-        catch 
-        { 
-        }
+        catch { }
     }
 
     private void loadData()
