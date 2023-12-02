@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using Avalonia.Media;
 using CultureCenter.Classes;
 using CultureCenter.data;
 using CultureCenter.PageChanges;
@@ -83,14 +84,14 @@ namespace CultureCenter.Pages
             var selectedBooking = ReservationDG.SelectedItem as Booking;
             if (selectedBooking != null)
             {
-                NavigationSystem.MainFrame.Content = new EditBooking(selectedBooking.Id);
+                NavigationSystem.MainFrame.Content = new EditBooking(selectedBooking.Id, 0);
             }
             
         }
 
         private void AddBookingBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-           NavigationSystem.MainFrame.Content = new EditBooking(-1);
+           NavigationSystem.MainFrame.Content = new EditBooking(-1, 0);
         }
     }
 }

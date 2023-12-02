@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using CultureCenter.Classes;
 using CultureCenter.data;
+using CultureCenter.PageChanges;
 using CultureCenter.Views;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -19,7 +20,15 @@ namespace CultureCenter.Pages
             DeleteEventBtn.Click += DeleteEventBtn_Click;
             BackBtn.Click += BackBtn_Click;
             SearchTB.TextChanged += SearchTB_TextChanged;
+            BookingBtn.Click += BookingBtn_Click;
             LoadData();
+        }
+
+        private void BookingBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            {
+                NavigationSystem.MainFrame.Content = new EditBooking(-1, 1);
+            }
         }
 
         private void SearchTB_TextChanged(object? sender, TextChangedEventArgs e)

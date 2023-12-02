@@ -13,14 +13,20 @@ using static CultureCenter.Classes.Helper;
 
 namespace CultureCenter.PageChanges
 {
+
+    
     public partial class EditBooking : UserControl
     {
         private long _id;
         private Booking booking;
-        public EditBooking(long id)
+        private int _backPath = 0;
+        private int _eventId = 0;
+        private int _roomId = 0;
+        public EditBooking(long id, int backPath)
         {
             InitializeComponent();
             _id = id;
+            _backPath = backPath;
             OkBtn.Click += OkBtn_Click;
             BackBtn.Click += BackBtn_Click;
             DataStartCmb.SelectedDateChanged += DataStartCmb_SelectedDateChanged;
@@ -76,7 +82,14 @@ namespace CultureCenter.PageChanges
 
         private void BackBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-            NavigationSystem.MainFrame.Content = new ReservationControl();
+            if(_backPath == 0)
+            {
+                NavigationSystem.MainFrame.Content = new ReservationControl();
+            }
+            else
+            {
+                NavigationSystem.MainFrame.Content = new DataControl();
+            }
         }
 
         private void loadData()
@@ -130,6 +143,8 @@ namespace CultureCenter.PageChanges
                 if (_id == -1)
                 {
                     Db.Bookings.Add(booking);
+
+                    Helper.ShowInfo("Вы успешно забронировали место!");
                 }
                 Db.SaveChanges();
                 NavigationSystem.MainFrame.Content = new ReservationControl();
