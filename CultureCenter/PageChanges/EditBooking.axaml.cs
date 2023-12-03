@@ -19,14 +19,17 @@ namespace CultureCenter.PageChanges
     {
         private long _id;
         private Booking booking;
+        private Event Event;
         private int _backPath = 0;
-        private int _eventId = 0;
-        private int _roomId = 0;
-        public EditBooking(long id, int backPath)
+        private long _roomId = 0;
+        private long _eventId = 0;
+        public EditBooking(long id, int backPath, long eventId, long roomId)
         {
             InitializeComponent();
             _id = id;
             _backPath = backPath;
+            _eventId = eventId;
+            _roomId = roomId;
             OkBtn.Click += OkBtn_Click;
             BackBtn.Click += BackBtn_Click;
             DataStartCmb.SelectedDateChanged += DataStartCmb_SelectedDateChanged;
@@ -86,9 +89,13 @@ namespace CultureCenter.PageChanges
             {
                 NavigationSystem.MainFrame.Content = new ReservationControl();
             }
-            else
+            else if(_backPath == 1)
             {
                 NavigationSystem.MainFrame.Content = new DataControl();
+            }
+            else
+            {
+                NavigationSystem.MainFrame.Content = new BookingServeise();
             }
         }
 
@@ -108,6 +115,7 @@ namespace CultureCenter.PageChanges
                     Db.Rooms.Load();
                     Db.Bookings.Load();
 
+
                     booking = Db.Bookings.Where(el => el.Id == _id).First();
                     DataStartCmb.SelectedDate = DateTime.Parse(booking.DataStart);
                     DataEndCmb.SelectedDate = DateTime.Parse(booking.DataEnd);
@@ -121,6 +129,15 @@ namespace CultureCenter.PageChanges
                 else
                 {
                     booking = new Booking();
+                    if(_eventId != 0)
+                    {
+                        booking.Events = Db.Events.FirstOrDefault(el => el.Id == _eventId);
+                        
+                    }
+                    if(_roomId != 0)
+                    {
+                        booking.Room = Db.Rooms.FirstOrDefault(el => el.Id == _roomId);
+                    }
                 }
                 BookingGrid.DataContext = booking;
             }
@@ -134,6 +151,7 @@ namespace CultureCenter.PageChanges
         {
             try
             {
+
                 booking.DataStart = DataStartCmb.SelectedDate.Value.ToString("d");
                 booking.DataEnd = DataEndCmb.SelectedDate.Value.ToString("d");
                 booking.DataCreation = DateTime.Now.ToString("d");
@@ -143,11 +161,24 @@ namespace CultureCenter.PageChanges
                 if (_id == -1)
                 {
                     Db.Bookings.Add(booking);
-
-                    Helper.ShowInfo("Вы успешно забронировали место!");
                 }
+
+
+
                 Db.SaveChanges();
-                NavigationSystem.MainFrame.Content = new ReservationControl();
+
+                if (_backPath == 0)
+                {
+                    NavigationSystem.MainFrame.Content = new ReservationControl();
+                }
+                else if (_backPath == 1)
+                {
+                    NavigationSystem.MainFrame.Content = new DataControl();
+                }
+                else
+                {
+                    NavigationSystem.MainFrame.Content = new BookingServeise();
+                }
             }
             catch (Exception ex)
             {

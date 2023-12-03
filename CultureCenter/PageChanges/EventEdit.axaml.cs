@@ -51,7 +51,7 @@ namespace CultureCenter.Pages
             try
             {
                 Db.TypesOfEvents.Load();
-                NameCb.ItemsSource = Db.TypesOfEvents.ToList();;
+                NameCb.ItemsSource = Db.TypesOfEvents.ToList();
 
                 if (_id != -1)
                 {

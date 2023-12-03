@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CultureCenter.Pages.BookingServeise">
+	<UniformGrid Name="BookingServeiseGrid" Columns="2" Height="300" Width="450">
+
+		<Label Content="Выберите дату:" VerticalAlignment="Center"
+					HorizontalAlignment="Left" />
+		<CalendarDatePicker Name="DataCreationCmb" Text="{Binding DataCreation}" Width="115" Height="30"
+					VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+		<Label Content="Помещения:" VerticalAlignment="Center"
+					HorizontalAlignment="Left"/>
+		<ComboBox Name="RoomCb"  Width="125" Height="35"
+					VerticalAlignment="Center" HorizontalAlignment="Left">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Label Content="{Binding Name}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<Button Name="BookBtn" Content="Забронировать" Width="125" Height="30"
+					HorizontalAlignment="Right" VerticalAlignment="Center" HorizontalContentAlignment="Center" Margin ="10"/>
+		<Button Name="BackBtn" Content="Назад" HorizontalAlignment="Left" Width="100" Height="30" HorizontalContentAlignment="Center" Margin ="10"/> 
+	</UniformGrid>
+</UserControl>

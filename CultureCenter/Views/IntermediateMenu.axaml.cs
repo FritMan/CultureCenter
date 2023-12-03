@@ -22,7 +22,13 @@ namespace CultureCenter.Views
             StatusesBtn.Click += StatusesBtn_Click;
             DesktopBtn.Click += DesktopBtn_Click;
             ReservationBtn.Click += ReservationBtn_Click;
+            BookingServeiseBtn.Click += BookingServeiseBtn_Click;
 
+        }
+
+        private void BookingServeiseBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            NavigationSystem.MainFrame.Content = new BookingServeise();
         }
 
         private void ReservationBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

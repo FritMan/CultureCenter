@@ -42,7 +42,7 @@ public partial class Desktop : UserControl
 
     private void BackBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        NavigationSystem.MainFrame.Content = new MainView();
+        NavigationSystem.MainFrame.Content = new IntermediateMenu();
     }
 
 

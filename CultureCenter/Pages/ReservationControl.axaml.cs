@@ -84,14 +84,14 @@ namespace CultureCenter.Pages
             var selectedBooking = ReservationDG.SelectedItem as Booking;
             if (selectedBooking != null)
             {
-                NavigationSystem.MainFrame.Content = new EditBooking(selectedBooking.Id, 0);
+                NavigationSystem.MainFrame.Content = new EditBooking(selectedBooking.Id, 0, 0, 0);
             }
             
         }
 
         private void AddBookingBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
-           NavigationSystem.MainFrame.Content = new EditBooking(-1, 0);
+           NavigationSystem.MainFrame.Content = new EditBooking(-1, 0, 0, 0);
         }
     }
 }

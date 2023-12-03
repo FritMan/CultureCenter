@@ -27,7 +27,11 @@ namespace CultureCenter.Pages
         private void BookingBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             {
-                NavigationSystem.MainFrame.Content = new EditBooking(-1, 1);
+                var selectedEvent = EventDG.SelectedItem as Event;
+                if (selectedEvent != null)
+                {
+                    NavigationSystem.MainFrame.Content = new EditBooking(-1, 1, selectedEvent.Id, 0);
+                }
             }
         }
 
