@@ -9,7 +9,11 @@
 		<StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
       <Label Name="Types" Content="Образование" HorizontalAlignment="Center">
       </Label>
-			<Button Name="EnlightenmentBtn" Content="Помещения" Margin="5" Width="150" HorizontalContentAlignment="Center"/>
+      <Button Name="TeachersBtn" Content="Преподаватели" Margin="5" Width="150" HorizontalContentAlignment="Center"/>
+      <Button Name="MugsBtn" Content="Кружки" Margin="5" Width="150" HorizontalContentAlignment="Center"/>
+      <Button Name="MugsTypesBtn" Content="Виды кружков" Margin="5" Width="150" HorizontalContentAlignment="Center"/>
+      <Button Name="EnlightenmentBtn" Content="Помещения" Margin="5" Width="150" HorizontalContentAlignment="Center"/>
+      <Button Name="DaysBtn" Content="Дни недели" Margin="5" Width="150" HorizontalContentAlignment="Center"/>
 			<Button Name="BackBtn" Content="На главное меню" Margin="5" Width="150" HorizontalContentAlignment="Center"/>
 		</StackPanel>
 		

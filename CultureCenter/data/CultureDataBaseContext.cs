@@ -17,11 +17,19 @@ public partial class CultureDataBaseContext : DbContext
 
     public virtual DbSet<Booking> Bookings { get; set; }
 
+    public virtual DbSet<DaysOfWeek> DaysOfWeeks { get; set; }
+
     public virtual DbSet<Event> Events { get; set; }
+
+    public virtual DbSet<Mug> Mugs { get; set; }
+
+    public virtual DbSet<MugsType> MugsTypes { get; set; }
 
     public virtual DbSet<Room> Rooms { get; set; }
 
     public virtual DbSet<Status> Statuses { get; set; }
+
+    public virtual DbSet<Teacher> Teachers { get; set; }
 
     public virtual DbSet<TypesOfEvent> TypesOfEvents { get; set; }
 
@@ -32,7 +40,7 @@ public partial class CultureDataBaseContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlite("data source =.\\DataBase\\CultureDataBase.db");
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Booking>(entity =>
@@ -48,6 +56,13 @@ public partial class CultureDataBaseContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
+        modelBuilder.Entity<DaysOfWeek>(entity =>
+        {
+            entity.ToTable("DaysOfWeek");
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+        });
+
         modelBuilder.Entity<Event>(entity =>
         {
             entity.Property(e => e.Description).HasColumnType("TEXT (100)");
@@ -58,6 +73,34 @@ public partial class CultureDataBaseContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
+        modelBuilder.Entity<Mug>(entity =>
+        {
+            entity.HasOne(d => d.DayId1Navigation).WithMany(p => p.MugDayId1Navigations)
+                .HasForeignKey(d => d.DayId1)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.DayId2Navigation).WithMany(p => p.MugDayId2Navigations).HasForeignKey(d => d.DayId2);
+
+            entity.HasOne(d => d.DayId3Navigation).WithMany(p => p.MugDayId3Navigations).HasForeignKey(d => d.DayId3);
+
+            entity.HasOne(d => d.MugsType).WithMany(p => p.Mugs)
+                .HasForeignKey(d => d.MugsTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.Room).WithMany(p => p.Mugs)
+                .HasForeignKey(d => d.RoomId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.Teacher).WithMany(p => p.Mugs)
+                .HasForeignKey(d => d.TeacherId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        });
+
+        modelBuilder.Entity<MugsType>(entity =>
+        {
+            entity.ToTable("MugsType");
+        });
+
         modelBuilder.Entity<Room>(entity =>
         {
             entity.ToTable("Room");
@@ -66,6 +109,11 @@ public partial class CultureDataBaseContext : DbContext
         modelBuilder.Entity<Status>(entity =>
         {
             entity.ToTable("Status");
+        });
+
+        modelBuilder.Entity<Teacher>(entity =>
+        {
+            entity.ToTable("Teacher");
         });
 
         modelBuilder.Entity<TypesOfEvent>(entity =>
