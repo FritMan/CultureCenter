@@ -11,6 +11,12 @@ namespace CultureCenter.Pages
             InitializeComponent();
             BackBtn.Click += BackBtn_Click;
             EnlightenmentBtn.Click += EnlightenmentBtn_Click;
+            TeachersBtn.Click += TeachersBtn_Click;
+        }
+
+        private void TeachersBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            NavigationSystem.MainFrame.Content = new TeacherControl();
         }
 
         private void EnlightenmentBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
