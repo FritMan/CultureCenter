@@ -13,6 +13,7 @@ namespace CultureCenter.Pages
             EnlightenmentBtn.Click += EnlightenmentBtn_Click;
             MugsTypesBtn.Click += MugsTypesBtn_Click;
             DaysBtn.Click += DaysBtn_Click;
+            TeachersBtn.Click += TeachersBtn_Click;
         }
 
         private void DaysBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
@@ -23,7 +24,6 @@ namespace CultureCenter.Pages
         private void MugsTypesBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
         {
             NavigationSystem.MainFrame.Content = new MugsTypes();
-            TeachersBtn.Click += TeachersBtn_Click;
         }
 
         private void TeachersBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
