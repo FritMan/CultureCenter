@@ -31,6 +31,7 @@ namespace CultureCenter.Pages
                     {
                         Db.Teachers.Remove(selectedTeacher);
                         Db.SaveChanges();
+                        NavigationSystem.MainFrame.Content = new TeacherControl();
                     }
                 }
                 else
