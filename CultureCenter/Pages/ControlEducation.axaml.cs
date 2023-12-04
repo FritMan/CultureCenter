@@ -11,6 +11,18 @@ namespace CultureCenter.Pages
             InitializeComponent();
             BackBtn.Click += BackBtn_Click;
             EnlightenmentBtn.Click += EnlightenmentBtn_Click;
+            MugsTypesBtn.Click += MugsTypesBtn_Click;
+            DaysBtn.Click += DaysBtn_Click;
+        }
+
+        private void DaysBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            NavigationSystem.MainFrame.Content = new Days();
+        }
+
+        private void MugsTypesBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            NavigationSystem.MainFrame.Content = new MugsTypes();
             TeachersBtn.Click += TeachersBtn_Click;
         }
 
