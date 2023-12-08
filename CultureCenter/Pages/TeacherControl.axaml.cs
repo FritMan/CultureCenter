@@ -14,9 +14,15 @@ namespace CultureCenter.Pages
         {
             InitializeComponent();
             BackBtn.Click += BackBtn_Click;
+            SearchTB.TextChanged += SearchTB_TextChanged;
             AddTeachersBtn.Click += AddTeachersBtn_Click;
             EditTeachersBtn.Click += EditTeachersBtn_Click;
             DeleteTeachersBtn.Click += DeleteTeachersBtn_Click;
+            LoadData();
+        }
+
+        private void SearchTB_TextChanged(object? sender, TextChangedEventArgs e)
+        {
             LoadData();
         }
 

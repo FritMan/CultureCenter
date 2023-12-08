@@ -23,9 +23,8 @@ namespace CultureCenter.PageChanges
             
             BackBtn.Click += BackBtn_Click;
             OkBtn.Click += OkBtn_Click;
-
-            loadData();
             DaysCb.SelectionChanged += DaysCb_SelectionChanged;
+            loadData();            
         }
 
         private void DaysCb_SelectionChanged(object? sender, SelectionChangedEventArgs e)
@@ -111,9 +110,7 @@ namespace CultureCenter.PageChanges
                     Mug = Db.Mugs.Where(el => el.Id == _id).First();
                     DateStartOfWorkCmb.SelectedDate = DateTime.Parse(Mug.DateStartOfWork);
                     TimeStartTp.SelectedTime = TimeSpan.Parse(Mug.TimeStart);
-                    TimeEndTp.SelectedTime = TimeSpan.Parse(Mug.TimeEnd);
-
-                    
+                    TimeEndTp.SelectedTime = TimeSpan.Parse(Mug.TimeEnd);                   
                 }
                 else
                 {
@@ -123,6 +120,18 @@ namespace CultureCenter.PageChanges
                     DayId1Cb.SelectedIndex = 0;
                 }
                 MugGrid.DataContext = Mug;
+                if(Mug.DayId2Navigation == null && Mug.DayId3Navigation == null)
+                {
+                    DaysCb.SelectedIndex = 0;
+                }
+                else if(Mug.DayId3Navigation == null)
+                {
+                    DaysCb.SelectedIndex = 1;
+                }
+                else
+                {
+                    DaysCb.SelectedIndex = 2;
+                }
             }
             catch
             {

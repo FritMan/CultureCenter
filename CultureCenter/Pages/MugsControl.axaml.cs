@@ -16,9 +16,15 @@ namespace CultureCenter.Pages
             InitializeComponent();
             LoadData();
             BackBtn.Click += BackBtn_Click;
+            SearchTB.TextChanged += SearchTB_TextChanged;
             DeleteMugsBtn.Click += DeleteMugsBtn_Click;
             EditMugsBtn.Click += EditMugsBtn_Click;
             AddMugsBtn.Click += AddMugsBtn_Click;
+        }
+
+        private void SearchTB_TextChanged(object? sender, TextChangedEventArgs e)
+        {
+            LoadData();
         }
 
         private void AddMugsBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)

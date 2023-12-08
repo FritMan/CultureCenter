@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CultureCenter.PageChanges.EditMugs">
-	<UniformGrid Name="MugGrid" Columns="2" Height="300" Width="450">
+	<UniformGrid Name="MugGrid" Columns="2" Height="450" Width="450">
 
 		<Label Content="Дата начала работы:" VerticalAlignment="Center"
 					HorizontalAlignment="Left"/>
