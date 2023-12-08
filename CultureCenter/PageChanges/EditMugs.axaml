@@ -1,0 +1,113 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CultureCenter.PageChanges.EditMugs">
+	<UniformGrid Name="MugGrid" Columns="2" Height="300" Width="450">
+
+		<Label Content="Дата начала работы:" VerticalAlignment="Center"
+					HorizontalAlignment="Left"/>
+		<CalendarDatePicker Name="DateStartOfWorkCmb" Width="115" Height="30"
+					VerticalAlignment="Center" HorizontalAlignment="Left"/>
+		
+		<Label Content="Время начала:" VerticalAlignment="Center"
+					HorizontalAlignment="Left"/>
+		<TimePicker Name="TimeStartTp" Width="150" Height="30"
+					VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+		<Label Content="Время окончания:" VerticalAlignment="Center"
+					HorizontalAlignment="Left"/>
+		<TimePicker Name="TimeEndTp" Width="150" Height="30"
+					VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+		<Label Content="Название:" VerticalAlignment="Center"
+				 HorizontalAlignment="Left"/>
+		<TextBox Name="NameTb" Text="{Binding Name}" Width="115" Height="30"
+				 TextWrapping="Wrap" AcceptsReturn="True"
+					VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+		<Label Content="Помещение:" VerticalAlignment="Center"
+					HorizontalAlignment="Left"/>
+		<ComboBox Name="RoomCb" SelectedItem ="{Binding Room}" Width="125" Height="30"
+					VerticalAlignment="Center" HorizontalAlignment="Left">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Label Content="{Binding Name}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<Label Content="Типы Кружков:" VerticalAlignment="Center"
+					HorizontalAlignment="Left"/>
+		<ComboBox Name="MugsTypesCb" SelectedItem ="{Binding MugsType}" Width="125" Height="30"
+					VerticalAlignment="Center" HorizontalAlignment="Left">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Label Content="{Binding Name}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		
+		<Label Content="Преподователь:" VerticalAlignment="Center"
+					HorizontalAlignment="Left"/>
+		<ComboBox Name="TeacherCb" SelectedItem ="{Binding Teacher}" Width="125" Height="30"
+					VerticalAlignment="Center" HorizontalAlignment="Left">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Label Content="{Binding Name}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<Label Content="Вариант расписания:" VerticalAlignment="Center"
+					HorizontalAlignment="Left"/>
+		<ComboBox Name="DaysCb" Width="125" Height="30"
+					VerticalAlignment="Center" SelectedIndex="0" HorizontalAlignment="Left">
+			<ComboBox.Items>
+				<ComboBoxItem Content="1 раз в неделю"/>
+				<ComboBoxItem Content="2 раз в неделю"/>
+				<ComboBoxItem Content="3 раз в неделю"/>
+			</ComboBox.Items>
+		</ComboBox>
+
+		<Label Name="DayId1L" Content="Дни проведения кружков:" VerticalAlignment="Center"
+					HorizontalAlignment="Left"/>
+		<ComboBox Name="DayId1Cb" SelectedItem ="{Binding DayId1Navigation}" Width="125" Height="30"
+					VerticalAlignment="Center" HorizontalAlignment="Left">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Label Content="{Binding Name}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<Label Name="DayId2L" Content="Дни проведения кружков:" VerticalAlignment="Center"
+					HorizontalAlignment="Left" IsVisible="False"/>
+		<ComboBox Name="DayId2Cb" SelectedItem="{Binding DayId2Navigation}" Width="125" Height="30"
+					VerticalAlignment="Center" IsVisible="False" HorizontalAlignment="Left">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Label Content="{Binding Name}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<Label Name="DayId3L" Content="Дни проведения кружков:" VerticalAlignment="Center"
+					HorizontalAlignment="Left" IsVisible="False"/>
+		<ComboBox Name="DayId3Cb" SelectedItem ="{Binding DayId3Navigation}" Width="125" Height="30"
+					VerticalAlignment="Center" HorizontalAlignment="Left" IsVisible="False">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<Label Content="{Binding Name}"/>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+
+		<Button Name="OkBtn" Content="Ок" Width="100" Height="30"
+					HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+
+		<Button Name="BackBtn" Content="Назад" Width="100" Height="30"
+					HorizontalAlignment="Right" VerticalAlignment="Center" HorizontalContentAlignment="Center"/>
+	</UniformGrid>
+</UserControl>

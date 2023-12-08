@@ -1,6 +1,7 @@
 using Avalonia.Controls;
 using CultureCenter.Classes;
 using CultureCenter.data;
+using CultureCenter.PageChanges;
 using Microsoft.EntityFrameworkCore;
 using System.Data.Common;
 using System.Linq;
@@ -16,6 +17,22 @@ namespace CultureCenter.Pages
             LoadData();
             BackBtn.Click += BackBtn_Click;
             DeleteMugsBtn.Click += DeleteMugsBtn_Click;
+            EditMugsBtn.Click += EditMugsBtn_Click;
+            AddMugsBtn.Click += AddMugsBtn_Click;
+        }
+
+        private void AddMugsBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            NavigationSystem.MainFrame.Content = new EditMugs(-1);
+        }
+
+        private void EditMugsBtn_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            var selectedMugs = MugsDG.SelectedItem as Mug;
+            if (selectedMugs != null)
+            {
+                NavigationSystem.MainFrame.Content = new EditMugs(selectedMugs.Id);
+            }
         }
 
         private void LoadData()
